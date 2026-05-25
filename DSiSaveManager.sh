@@ -34,7 +34,7 @@ else
     exit 1
 fi
 
-clear
+command -v clear >/dev/null 2>&1 && clear
 
 echo -e "${GREEN}DSiSaveManager 1.0${RESET}"
 echo "This was bugfixed by ChatGPT"
@@ -125,7 +125,12 @@ case "$ans" in
             [[ -n "$save_to_restore" ]] && break
         done
 
-        cp -- "$save_to_restore" "$savedir"
+        basename="${save_to_restore%.*}"
+
+        for ext in sav pub prv; do
+            file="$basename.$ext"
+            [[ -f "$file" ]] && cp -- "$file" "$savedir"
+        done
 
         popd >/dev/null
 
