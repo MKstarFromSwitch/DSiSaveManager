@@ -1,5 +1,5 @@
 # DSiSaveManager
-A save manager for your Nintendo DSi save data
+A save manager for your Nintendo DSi save data. Install crudini and zenity before running.
 
 ## How to run the script
 Run the following commands:
